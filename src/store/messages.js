@@ -1,27 +1,17 @@
-import kuzzle from '../services/kuzzle'
+// import {sendMessage, subscribeMessages} from '../services/kuzzle'
+import {sendMessage, subscribeMessages} from '../services/firebase'
 
 export default {
   state: {
     messages: []
   },
   sendMessage (content) {
-    const message = {content, date: Date.now()}
-    kuzzle
-      .dataCollectionFactory('messages')
-      .createDocument(message)
+    const message = {content, date: Date.now}
+    sendMessage(message)
   },
   subscribeMessages () {
-    kuzzle
-      .dataCollectionFactory('messages')
-      .subscribe({}, null, (error, notification) => {
-        if (error) {
-          console.log(error.message)
-          return
-        }
-        this.state.messages.push({
-          ...notification.result._source,
-          id: notification.result._id
-        })
-      })
+    subscribeMessages(data => {
+      this.state.messages.push(data)
+    })
   }
 }

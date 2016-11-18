@@ -9,6 +9,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "firebase": "^3.6.1",
     "kuzzle-sdk": "^2.2.0",
     "vue": "^2.0.1"
   },

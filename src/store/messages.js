@@ -6,7 +6,7 @@ export default {
     messages: []
   },
   sendMessage (content) {
-    const message = {content, date: Date.now}
+    const message = {content, date: Date.now()}
     sendMessage(message)
   },
   subscribeMessages () {

@@ -5,8 +5,8 @@ export default {
   state: {
     messages: []
   },
-  sendMessage (content) {
-    const message = {content, date: Date.now()}
+  sendMessage (content, user) {
+    const message = {content, user, date: Date.now()}
     sendMessage(message)
   },
   subscribeMessages () {

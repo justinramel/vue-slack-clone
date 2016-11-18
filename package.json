@@ -11,7 +11,8 @@
   "dependencies": {
     "firebase": "^3.6.1",
     "kuzzle-sdk": "^2.2.0",
-    "vue": "^2.0.1"
+    "vue": "^2.0.1",
+    "vue-router": "^2.0.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",

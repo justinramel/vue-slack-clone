@@ -13,6 +13,7 @@ export const subscribeMessages = (cb) => {
   messages.on('child_added', (data, d2, d3) => {
     cb({
       id: data.key,
+      user: data.val().user || {username: 'Anon'},
       content: data.val().content,
       date: data.val().date ? new Date(data.val().date).getTime() : Date.now()
     })

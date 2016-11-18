@@ -13,6 +13,7 @@
 
 <script>
   export default {
+    props: ['currentUser'],
     data () {
       return {
         newMessage: null
@@ -21,7 +22,7 @@
     methods: {
       onEnter () {
         if (this.newMessage.length > 0) {
-          this.$emit('sendMessage', this.newMessage)
+          this.$emit('sendMessage', this.newMessage, this.currentUser)
           this.newMessage = null
         }
       }

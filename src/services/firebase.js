@@ -2,6 +2,7 @@ import Firebase from 'firebase'
 import config from './firebase-config'
 
 export const fb = Firebase.initializeApp(config)
+export const auth = fb.auth()
 export const db = fb.database()
 export const table = (name) => db.ref(name)
 export const messages = table('messages')
@@ -17,15 +18,8 @@ export const subscribeMessages = (cb) => {
   })
 }
 export const login = (email, password, callback, errorCallback) => {
-  fb.auth().onAuthStateChanged((user, x, y) => {
-    callback(user)
-  })
-
-  fb.auth().signInWithEmailAndPassword(email, password)
-    .catch(error => {
-      errorCallback(error)
-    })
+  auth.onAuthStateChanged(callback)
+  auth.signInWithEmailAndPassword(email, password)
+    .catch(errorCallback)
 }
-export const logout = () => {
-  fb.auth().signOut()
-}
+export const logout = () => auth.signOut()

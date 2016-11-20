@@ -14,6 +14,7 @@ export default {
         router.push({name: 'chat'})
       }
     }, error => {
+      this.state.username = null
       this.state.errorMessage = error.message
     })
   },

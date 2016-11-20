@@ -11,6 +11,7 @@
         <span class="user-menu-username">
           {{UserStore.state.username}}
         </span>
+        <button @click="logout">Logout</button>
       </div>
     </div>
   </div>
@@ -21,6 +22,7 @@ import InputBar from './components/InputBar'
 import Messages from './components/Messages'
 import MessageStore from './store/messages'
 import UserStore from './store/user'
+import {router} from './main'
 
 export default {
   data () {
@@ -32,6 +34,12 @@ export default {
   components: {
     InputBar,
     Messages
+  },
+  methods: {
+    logout () {
+      UserStore.logout()
+      router.push({name: 'login'})
+    }
   },
   created () {
     MessageStore.subscribeMessages()
